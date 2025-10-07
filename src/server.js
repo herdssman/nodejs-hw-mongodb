@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import { getEnvVar } from './utils/env.js';
 import { initMongoConnection } from './db/initMongoConnection.js';
 import router from './routers/contacts.js';
+import notFoundHandler from './middlewares/notFoundHandler.js';
+import errorHandler from './middlewares/errorHandler.js';
 
 dotenv.config();
 
@@ -14,6 +16,8 @@ export const setupServer = async () => {
   await initMongoConnection();
 
   const app = express();
+
+  app.use(express.json());
 
   app.use(cors());
 
@@ -27,16 +31,9 @@ export const setupServer = async () => {
 
   app.use('/contacts', router);
 
-  app.use((req, res) => {
-    res.status(404).json({
-      message: 'Not found',
-    });
-  });
+  app.use(notFoundHandler);
 
-  app.use((err, req, res, next) => {
-    console.error(err);
-    res.status(500).json({ message: 'Internal Server Error' });
-  });
+  app.use(errorHandler);
 
   app.listen(PORT, (error) => {
     if (error) {
