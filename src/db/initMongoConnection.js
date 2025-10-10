@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { getEnvVar } from '../utils/env.js';
+import getEnvVar from '../utils/env.js';
 
 export async function initMongoConnection() {
   const url = getEnvVar('MONGODB_URL');

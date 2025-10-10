@@ -2,7 +2,7 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { getEnvVar } from './utils/env.js';
+import getEnvVar from './utils/env.js';
 import { initMongoConnection } from './db/initMongoConnection.js';
 import router from './routers/contacts.js';
 import notFoundHandler from './middlewares/notFoundHandler.js';
