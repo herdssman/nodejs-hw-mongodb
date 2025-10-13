@@ -2,6 +2,11 @@ import mongoose from 'mongoose';
 
 const contactSchema = new mongoose.Schema(
   {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -26,14 +31,8 @@ const contactSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    versionKey: false,
   },
 );
-
-contactSchema.set('toJSON', {
-  transform: (doc, ret) => {
-    delete ret.__v;
-    return ret;
-  },
-});
 
 export const Contact = mongoose.model('Contact', contactSchema);

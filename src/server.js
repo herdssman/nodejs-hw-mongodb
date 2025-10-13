@@ -2,9 +2,10 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 import getEnvVar from './utils/env.js';
 import { initMongoConnection } from './db/initMongoConnection.js';
-import router from './routers/contacts.js';
+import router from './routers/index.js';
 import notFoundHandler from './middlewares/notFoundHandler.js';
 import errorHandler from './middlewares/errorHandler.js';
 
@@ -21,6 +22,8 @@ export const setupServer = async () => {
 
   app.use(cors());
 
+  app.use(cookieParser());
+
   app.use(
     pino({
       transport: {
@@ -29,7 +32,7 @@ export const setupServer = async () => {
     }),
   );
 
-  app.use('/contacts', router);
+  app.use(router);
 
   app.use(notFoundHandler);
 
