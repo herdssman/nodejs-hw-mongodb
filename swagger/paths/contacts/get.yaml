@@ -1,0 +1,70 @@
+tags:
+  - contacts
+summary: Get all Contacts
+operationId: getAllContacts
+description: Get the list of all accessible contacts
+security:
+  - bearerAuth: []
+
+parameters:
+  - in: query
+    name: page
+    schema:
+      type: integer
+      example: 1
+      default: 1
+  - in: query
+    name: perPage
+    schema:
+      type: integer
+      example: 10
+      default: 10
+  - in: query
+    name: sortBy
+    schema:
+      type: string
+      example: name
+      default: -id
+    description: Any contact field can be mentioned
+  - in: query
+    name: sortOrder
+    schema:
+      type: string
+      enum: ['asc', 'desc']
+      default: asc
+  - in: query
+    name: isFavourite
+    schema:
+      type: boolean
+  - in: query
+    name: contactType
+    schema:
+      type: string
+      enum: ['work', 'home', 'personal']
+
+responses:
+  '200':
+    description: Successfully found contacts
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'Successfully found contacts!'
+            data:
+              $ref: '../../components/schemas/contact.yaml'
+
+  '401':
+    $ref: ../../components/responses/401.yaml
+
+  '500':
+    $ref: ../../components/responses/500.yaml

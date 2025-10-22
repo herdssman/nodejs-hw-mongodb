@@ -1,5 +1,6 @@
 import { Contact } from '../models/contacts.js';
 import calculatePaginationData from '../utils/calculatePaginationData.js';
+import createHttpError from 'http-errors';
 
 export const getAllContacts = async ({
   page,
@@ -39,7 +40,10 @@ export const getOneContact = (contactId, userId) => {
   return Contact.findOne({ _id: contactId, userId });
 };
 
-export const createContact = (payload) => {
+export const createContact = async (payload) => {
+  const email = await Contact.findOne({ email: payload.email });
+
+  if (email) throw createHttpError(409, 'Email in use');
   return Contact.create(payload);
 };
 

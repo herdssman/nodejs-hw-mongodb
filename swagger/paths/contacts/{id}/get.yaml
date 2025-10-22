@@ -1,0 +1,71 @@
+tags:
+  - contacts
+summary: Get a Contact
+operationId: getOneContact
+description: Get a contact by searching for their id
+security:
+  - bearerAuth: []
+
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: 68f7cfa3f056bcb7beb2fcf3
+
+responses:
+  '200':
+    description: Successfully retrieved the contact
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'Successfully found contact with id 68f7d10570bd56907660a4ac'
+            data:
+              $ref: '../../../components/schemas/contact.yaml'
+
+  '400':
+    $ref: ../../../components/responses/400.yaml
+
+  '401':
+    $ref: ../../../components/responses/401.yaml
+
+  '404':
+    description: Contact not found
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 404
+            message:
+              type: string
+              example: NotFoundError
+            data:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                  example: Contact not found
+
+  '500':
+    $ref: ../../../components/responses/500.yaml
