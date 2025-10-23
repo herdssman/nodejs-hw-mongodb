@@ -7,6 +7,7 @@ security:
   - bearerAuth: []
 
 requestBody:
+  required: true
   content:
     multipart/form-data:
       schema:
@@ -14,7 +15,7 @@ requestBody:
 
 responses:
   '201':
-    description: Contact is created
+    description: Contact successfully created
     content:
       application/json:
         schema:

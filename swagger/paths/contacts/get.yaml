@@ -32,15 +32,18 @@ parameters:
       type: string
       enum: ['asc', 'desc']
       default: asc
+      description: Sort order direction (ascending or descending)
   - in: query
     name: isFavourite
     schema:
       type: boolean
+      description: Filter contacts by favourite status
   - in: query
     name: contactType
     schema:
       type: string
       enum: ['work', 'home', 'personal']
+      description: Filter contacts by type
 
 responses:
   '200':
@@ -61,7 +64,9 @@ responses:
               type: string
               example: 'Successfully found contacts!'
             data:
-              $ref: '../../components/schemas/contact.yaml'
+              type: array
+              items:
+                $ref: '../../components/schemas/contact.yaml'
 
   '401':
     $ref: ../../components/responses/401.yaml

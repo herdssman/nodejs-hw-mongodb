@@ -13,6 +13,7 @@ parameters:
     schema:
       type: string
       example: 68f7cfa3f056bcb7beb2fcf3
+    description: Contact ID to update
 
 requestBody:
   required: true
