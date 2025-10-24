@@ -20,13 +20,15 @@
   "tags": [
     {
       "name": "contacts",
-      "description": "Operations about contacts"
+      "description": "operations about contatcs"
     }
   ],
   "paths": {
     "/contacts": {
       "get": {
-        "tags": ["contacts"],
+        "tags": [
+          "contacts"
+        ],
         "summary": "Get all Contacts",
         "operationId": "getAllContacts",
         "description": "Get the list of all accessible contacts",
@@ -69,27 +71,34 @@
             "name": "sortOrder",
             "schema": {
               "type": "string",
-              "enum": ["asc", "desc"],
-              "default": "asc"
-            },
-            "description": "Sort order direction (ascending or descending)"
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "asc",
+              "description": "Sort order direction (ascending or descending)"
+            }
           },
           {
             "in": "query",
             "name": "isFavourite",
             "schema": {
-              "type": "boolean"
-            },
-            "description": "Filter contacts by favourite status"
+              "type": "boolean",
+              "description": "Filter contacts by favourite status"
+            }
           },
           {
             "in": "query",
             "name": "contactType",
             "schema": {
               "type": "string",
-              "enum": ["work", "home", "personal"]
-            },
-            "description": "Filter contacts by type"
+              "enum": [
+                "work",
+                "home",
+                "personal"
+              ],
+              "description": "Filter contacts by type"
+            }
           }
         ],
         "responses": {
@@ -99,7 +108,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["status", "message", "data"],
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -129,7 +142,9 @@
         }
       },
       "post": {
-        "tags": ["contacts"],
+        "tags": [
+          "contacts"
+        ],
         "summary": "Create a Contact",
         "operationId": "createContact",
         "description": "Create a new contact with the provided details",
@@ -155,7 +170,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["status", "message", "data"],
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -187,7 +206,9 @@
     },
     "/contacts/{id}": {
       "get": {
-        "tags": ["contacts"],
+        "tags": [
+          "contacts"
+        ],
         "summary": "Get a Contact",
         "operationId": "getOneContact",
         "description": "Get a contact by searching for their id",
@@ -214,7 +235,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["status", "message", "data"],
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -244,7 +269,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["status", "message", "data"],
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -256,7 +285,9 @@
                     },
                     "data": {
                       "type": "object",
-                      "required": ["message"],
+                      "required": [
+                        "message"
+                      ],
                       "properties": {
                         "message": {
                           "type": "string",
@@ -275,7 +306,9 @@
         }
       },
       "patch": {
-        "tags": ["contacts"],
+        "tags": [
+          "contacts"
+        ],
         "summary": "Update a Contact",
         "operationId": "updateContact",
         "description": "Update contact details by ID with partial data",
@@ -313,7 +346,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["status", "message", "data"],
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -343,7 +380,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["status", "message", "data"],
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -355,7 +396,9 @@
                     },
                     "data": {
                       "type": "object",
-                      "required": ["message"],
+                      "required": [
+                        "message"
+                      ],
                       "properties": {
                         "message": {
                           "type": "string",
@@ -374,7 +417,9 @@
         }
       },
       "delete": {
-        "tags": ["contacts"],
+        "tags": [
+          "contacts"
+        ],
         "summary": "Delete a Contact",
         "operationId": "deleteContact",
         "description": "Delete a contact by their ID",
@@ -396,7 +441,8 @@
         ],
         "responses": {
           "204": {
-            "description": "Contact successfully deleted"
+            "description": "Contact successfully deleted",
+            "content": {}
           },
           "400": {
             "$ref": "#/components/responses/400"
@@ -410,7 +456,11 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": ["status", "message", "data"],
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -422,7 +472,9 @@
                     },
                     "data": {
                       "type": "object",
-                      "required": ["message"],
+                      "required": [
+                        "message"
+                      ],
                       "properties": {
                         "message": {
                           "type": "string",
@@ -487,13 +539,16 @@
           },
           "isFavourite": {
             "description": "Whether the contact is marked as favourite",
-            "type": "boolean",
-            "example": true
+            "type": "boolean"
           },
           "contactType": {
             "description": "Contact type",
             "type": "string",
-            "enum": ["work", "home", "personal"]
+            "enum": [
+              "work",
+              "home",
+              "personal"
+            ]
           },
           "photo": {
             "description": "Link to contact's photo",
@@ -516,8 +571,22 @@
       },
       "createContact": {
         "type": "object",
-        "required": ["name", "phoneNumber", "contactType"],
+        "required": [
+          "name",
+          "phoneNumber",
+          "contactType"
+        ],
         "properties": {
+          "_id": {
+            "description": "Contact's id",
+            "type": "string",
+            "example": "68f7cfa3f056bcb7beb2fcf2"
+          },
+          "userId": {
+            "description": "Owner user id",
+            "type": "string",
+            "example": "68f7cfa3f056bcb7beb2fcf1"
+          },
           "name": {
             "description": "Contact's name",
             "type": "string",
@@ -540,18 +609,44 @@
           "contactType": {
             "description": "Contact type",
             "type": "string",
-            "enum": ["work", "home", "personal"]
+            "enum": [
+              "work",
+              "home",
+              "personal"
+            ]
           },
           "photo": {
-            "description": "Contact's photo file",
+            "description": "Link to contact's photo",
             "type": "string",
-            "format": "binary"
+            "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+          },
+          "createdAt": {
+            "description": "Creation timestamp",
+            "type": "string",
+            "format": "date-time",
+            "example": "1970-01-01T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp",
+            "type": "string",
+            "format": "date-time",
+            "example": "1970-01-01T00:01:00.000Z"
           }
         }
       },
       "updateContact": {
         "type": "object",
         "properties": {
+          "_id": {
+            "description": "Contact's id",
+            "type": "string",
+            "example": "68f7cfa3f056bcb7beb2fcf2"
+          },
+          "userId": {
+            "description": "Owner user id",
+            "type": "string",
+            "example": "68f7cfa3f056bcb7beb2fcf1"
+          },
           "name": {
             "description": "Contact's name",
             "type": "string",
@@ -574,24 +669,44 @@
           "contactType": {
             "description": "Contact type",
             "type": "string",
-            "enum": ["work", "home", "personal"]
+            "enum": [
+              "work",
+              "home",
+              "personal"
+            ]
           },
           "photo": {
-            "description": "Contact's photo file",
+            "description": "Link to contact's photo",
             "type": "string",
-            "format": "binary"
+            "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+          },
+          "createdAt": {
+            "description": "Creation timestamp",
+            "type": "string",
+            "format": "date-time",
+            "example": "1970-01-01T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "description": "Last update timestamp",
+            "type": "string",
+            "format": "date-time",
+            "example": "1970-01-01T00:01:00.000Z"
           }
         }
       }
     },
     "responses": {
       "400": {
-        "description": "Bad Request Error",
+        "description": "Bad request",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["status", "message", "data"],
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
               "properties": {
                 "status": {
                   "type": "integer",
@@ -602,7 +717,11 @@
                   "example": "BadRequestError"
                 },
                 "data": {
-                  "type": "object"
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "Name is required"
+                  }
                 }
               }
             }
@@ -610,12 +729,15 @@
         }
       },
       "401": {
-        "description": "Unauthorized Error",
+        "description": "Unauthorized error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["status", "message", "data"],
+              "required": [
+                "status",
+                "message"
+              ],
               "properties": {
                 "status": {
                   "type": "integer",
@@ -627,11 +749,13 @@
                 },
                 "data": {
                   "type": "object",
-                  "required": ["message"],
+                  "required": [
+                    "message"
+                  ],
                   "properties": {
                     "message": {
                       "type": "string",
-                      "example": "Access token expired"
+                      "example": "Unauthorized Error"
                     }
                   }
                 }
@@ -641,12 +765,15 @@
         }
       },
       "500": {
-        "description": "Internal Server Error",
+        "description": "Internal server error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
-              "required": ["status", "message", "data"],
+              "required": [
+                "status",
+                "message"
+              ],
               "properties": {
                 "status": {
                   "type": "integer",
@@ -654,10 +781,19 @@
                 },
                 "message": {
                   "type": "string",
-                  "example": "Internal Server Error"
+                  "example": "InternalServerError"
                 },
                 "data": {
-                  "type": "object"
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal Server Error"
+                    }
+                  }
                 }
               }
             }
