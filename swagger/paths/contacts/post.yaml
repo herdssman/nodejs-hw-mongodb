@@ -32,7 +32,7 @@ responses:
               type: string
               example: Successfully created a contact!
             data:
-              $ref: ../../components/schemas/createContact.yaml
+              $ref: ../../components/schemas/contact.yaml
 
   '400':
     $ref: '../../components/responses/400.yaml'
