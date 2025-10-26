@@ -185,7 +185,7 @@
                       "example": "Successfully created a contact!"
                     },
                     "data": {
-                      "$ref": "#/components/schemas/createContact"
+                      "$ref": "#/components/schemas/contact"
                     }
                   }
                 }
@@ -577,16 +577,6 @@
           "contactType"
         ],
         "properties": {
-          "_id": {
-            "description": "Contact's id",
-            "type": "string",
-            "example": "68f7cfa3f056bcb7beb2fcf2"
-          },
-          "userId": {
-            "description": "Owner user id",
-            "type": "string",
-            "example": "68f7cfa3f056bcb7beb2fcf1"
-          },
           "name": {
             "description": "Contact's name",
             "type": "string",
@@ -618,35 +608,13 @@
           "photo": {
             "description": "Link to contact's photo",
             "type": "string",
-            "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
-          },
-          "createdAt": {
-            "description": "Creation timestamp",
-            "type": "string",
-            "format": "date-time",
-            "example": "1970-01-01T00:00:00.000Z"
-          },
-          "updatedAt": {
-            "description": "Last update timestamp",
-            "type": "string",
-            "format": "date-time",
-            "example": "1970-01-01T00:01:00.000Z"
+            "format": "binary"
           }
         }
       },
       "updateContact": {
         "type": "object",
         "properties": {
-          "_id": {
-            "description": "Contact's id",
-            "type": "string",
-            "example": "68f7cfa3f056bcb7beb2fcf2"
-          },
-          "userId": {
-            "description": "Owner user id",
-            "type": "string",
-            "example": "68f7cfa3f056bcb7beb2fcf1"
-          },
           "name": {
             "description": "Contact's name",
             "type": "string",
@@ -678,19 +646,7 @@
           "photo": {
             "description": "Link to contact's photo",
             "type": "string",
-            "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
-          },
-          "createdAt": {
-            "description": "Creation timestamp",
-            "type": "string",
-            "format": "date-time",
-            "example": "1970-01-01T00:00:00.000Z"
-          },
-          "updatedAt": {
-            "description": "Last update timestamp",
-            "type": "string",
-            "format": "date-time",
-            "example": "1970-01-01T00:01:00.000Z"
+            "format": "binary"
           }
         }
       }
